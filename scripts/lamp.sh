@@ -35,10 +35,14 @@ sudo systemctl enable httpd.service > /dev/null 2>&1
 sudo cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak 
 sudo sed -i 's_/var/www/html_/var/www/_' /etc/httpd/conf/httpd.conf
 sudo sed -i 's_#ServerName www.example.com:80_ServerName www.abox.dev:80_' /etc/httpd/conf/httpd.conf
+sudo sed -i 's_User apache_User vagrant_' /etc/httpd/conf/httpd.conf
+sudo sed -i 's_Group apache_Group vagrant_' /etc/httpd/conf/httpd.conf
 sudo sh -c 'echo "IncludeOptional sites-enabled/*.conf" >> /etc/httpd/conf/httpd.conf'
 sudo mkdir /etc/httpd/sites-available/
 sudo mkdir /etc/httpd/sites-enabled/
 sudo rm -fr /var/www/html
+
+User vagrant
 
 sudo sed -i 's_ScriptAlias /cgi-bin/_#ScriptAlias /cgi-bin/_' /etc/httpd/conf/httpd.conf
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/httpd/conf/httpd.conf
