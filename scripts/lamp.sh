@@ -37,50 +37,54 @@ sudo sed -i 's_/var/www/html_/var/www/_' /etc/httpd/conf/httpd.conf
 sudo sh -c 'echo "IncludeOptional sites-enabled/*.conf" >> /etc/httpd/conf/httpd.conf'
 sudo mkdir /etc/httpd/sites-available/
 sudo mkdir /etc/httpd/sites-enabled/
+sudo rm -fr /var/www/html
 
 echo "--> Configuring aBox.dev Virtualhost"
-sudo mv /var/www/html /var/www/abox.dev
-sudo mkdir /var/www/abox.dev/html/
+sudo mkdir /var/www/abox.dev
+sudo mkdir /var/www/abox.dev/html
 sudo touch /var/www/abox.dev/html/index.html
 sudo sh -c 'echo "This is abox.dev" >> /var/www/abox.dev/html/index.html'
+sudo touch /etc/httpd/sites-available/abox.dev.conf
 sudo sh -c 'echo "<VirtualHost *:80>
         ServerName      www.abox.dev
         ServerAlias     abox.dev
         DocumentRoot    /var/www/abox.dev/html
         ErrorLog        /var/www/abox.dev/error.log
         CustomLog       /var/www/abox.dev/requests.log  combined
-</VirtualHost>" >> /etc/httpd/conf/sites-available/abox.dev.conf'
-sudo ln -s /etc/httpd/conf/sites-available/abox.dev.conf /etc/httpd/conf/sites-enabled/abox.dev.conf 
+</VirtualHost>" >> /etc/httpd/sites-available/abox.dev.conf'
+sudo ln -s /etc/httpd/sites-available/abox.dev.conf /etc/httpd/sites-enabled/abox.dev.conf 
 echo ".. Done!"
 
 echo "--> Configuring example1.dev Virtualhost"
 sudo mkdir /var/www/example1.dev
-sudo mkdir /var/www/example1.dev/html/
+sudo mkdir /var/www/example1.dev/html
 sudo touch /var/www/example1.dev/html/index.html
 sudo sh -c 'echo "This is example1.dev" >> /var/www/example1.dev/html/index.html'
+sudo touch /etc/httpd/sites-available/example1.dev.conf
 sudo sh -c 'echo "<VirtualHost *:80>
         ServerName      www.example1.dev
         ServerAlias     example1.dev
         DocumentRoot    /var/www/example1.dev/html
         ErrorLog        /var/www/example1.dev/error.log
         CustomLog       /var/www/example1.dev/requests.log  combined
-</VirtualHost>" >> /etc/httpd/conf/sites-available/example1.dev.conf'
-sudo ln -s /etc/httpd/conf/sites-available/example1.dev.conf /etc/httpd/conf/sites-enabled/example1.dev.conf 
+</VirtualHost>" >> /etc/httpd/sites-available/example1.dev.conf'
+sudo ln -s /etc/httpd/sites-available/example1.dev.conf /etc/httpd/sites-enabled/example1.dev.conf 
 echo "--> .. Done!"
 
 echo "--> Configuring example2.dev Virtualhost"
 sudo mkdir /var/www/example2.dev
-sudo mkdir /var/www/example2.dev/html/
+sudo mkdir /var/www/example2.dev/html
 sudo touch /var/www/example2.dev/html/index.html
 sudo sh -c 'echo "This is example2.dev" >> /var/www/example2.dev/html/index.html'
+sudo touch /etc/httpd/sites-available/example2.dev.conf
 sudo sh -c 'echo "<VirtualHost *:80>
         ServerName      www.example2.dev
         ServerAlias     example2.dev
         DocumentRoot    /var/www/example2.dev/html
         ErrorLog        /var/www/example2.dev/error.log
         CustomLog       /var/www/example2.dev/requests.log  combined
-</VirtualHost>" >> /etc/httpd/conf/sites-available/example2.dev.conf'
-sudo ln -s /etc/httpd/conf/sites-available/example2.dev.conf /etc/httpd/conf/sites-enabled/example2.dev.conf 
+</VirtualHost>" >> /etc/httpd/sites-available/example2.dev.conf'
+sudo ln -s /etc/httpd/sites-available/example2.dev.conf /etc/httpd/sites-enabled/example2.dev.conf 
 echo "--> .. Done!"
 
 sudo systemctl restart httpd.service > /dev/null 2>&1
@@ -100,6 +104,9 @@ echo "...Done!"
 echo " "
 
 echo "Your aBox LAMP environment is now setup! "
+echo " "
+echo "MySQL Username: root"
+echo "MySQL Password: vagrant"
 echo " "
 echo "You can copy and paste the following to your hosts file: "
 echo " " 
