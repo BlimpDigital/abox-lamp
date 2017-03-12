@@ -1,31 +1,31 @@
 #!/bin/bash
 echo "Updating System..."
-sudo yum update > /dev/null 2>&1
+sudo yum update -y > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
 
-echo "Installing Apache..."
+echo "Installing Apache...(httpd httpd-tools)"
 sudo yum install -y httpd httpd-tools > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
-echo "Installing PHP..." 
+echo "Installing PHP...(php php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm)" 
 sudo yum install -y php php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
-echo "Installing GIT..." 
+echo "Installing GIT...(git)" 
 sudo yum install -y git > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
-echo "Installing Expect..." 
+echo "Installing Expect...(expect)" 
 sudo yum install -y expect > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
-echo "Installing MariaDB..."
+echo "Installing MariaDB...(mariadb-server mariadb)"
 sudo yum install -y mariadb-server mariadb > /dev/null 2>&1
 echo "...Done!"
 echo " "
