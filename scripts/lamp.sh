@@ -41,11 +41,8 @@ sudo mkdir /etc/httpd/sites-available/
 sudo mkdir /etc/httpd/sites-enabled/
 sudo rm -fr /var/www/html
 
-User vagrant
-
 sudo sed -i 's_ScriptAlias /cgi-bin/_#ScriptAlias /cgi-bin/_' /etc/httpd/conf/httpd.conf
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/httpd/conf/httpd.conf
-
 
 echo "--> Configuring aBox.dev Virtualhost"
 sudo mkdir /var/www/abox.dev
