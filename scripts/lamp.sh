@@ -31,7 +31,6 @@ echo "...Done!"
 echo " "
 
 echo "Setting up Apache..."
-sudo systemctl enable httpd.service > /dev/null 2>&1
 sudo cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak 
 sudo sed -i 's_/var/www/html_/var/www/_' /etc/httpd/conf/httpd.conf
 sudo sed -i 's_#ServerName www.example.com:80_ServerName www.abox.dev:80_' /etc/httpd/conf/httpd.conf
@@ -96,6 +95,7 @@ sudo sh -c 'echo "<VirtualHost *:80>
 sudo ln -s /etc/httpd/sites-available/example2.dev.conf /etc/httpd/sites-enabled/example2.dev.conf 
 echo "--> .. Done!"
 
+sudo systemctl enable httpd.service > /dev/null 2>&1
 sudo systemctl restart httpd.service > /dev/null 2>&1
 echo "...Done!"
 echo " "
