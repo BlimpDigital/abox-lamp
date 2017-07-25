@@ -43,6 +43,7 @@ sudo rm -fr /var/www/html
 
 sudo sed -i 's_ScriptAlias /cgi-bin/_#ScriptAlias /cgi-bin/_' /etc/httpd/conf/httpd.conf
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/httpd/conf/httpd.conf
+sudo sed -i "s/EnableSendfile on/EnableSendfile Off/g" /etc/httpd/conf/httpd.conf
 
 echo "--> Configuring aBox.dev Virtualhost"
 sudo mkdir /var/www/abox.dev
