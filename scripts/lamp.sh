@@ -55,8 +55,6 @@ sudo sh -c 'echo "<VirtualHost *:80>
         ServerName      www.abox.dev
         ServerAlias     abox.dev
         DocumentRoot    /var/www/abox.dev/html
-        ErrorLog        /var/www/abox.dev/error.log
-        CustomLog       /var/www/abox.dev/requests.log  combined
 </VirtualHost>" >> /etc/httpd/sites-available/abox.dev.conf'
 sudo ln -s /etc/httpd/sites-available/abox.dev.conf /etc/httpd/sites-enabled/abox.dev.conf 
 echo ".. Done!"
@@ -71,8 +69,6 @@ sudo sh -c 'echo "<VirtualHost *:80>
         ServerName      www.example1.dev
         ServerAlias     example1.dev
         DocumentRoot    /var/www/example1.dev/html
-        ErrorLog        /var/www/example1.dev/error.log
-        CustomLog       /var/www/example1.dev/requests.log  combined
 </VirtualHost>" >> /etc/httpd/sites-available/example1.dev.conf'
 sudo ln -s /etc/httpd/sites-available/example1.dev.conf /etc/httpd/sites-enabled/example1.dev.conf 
 echo "--> .. Done!"
@@ -87,8 +83,6 @@ sudo sh -c 'echo "<VirtualHost *:80>
         ServerName      www.example2.dev
         ServerAlias     example2.dev
         DocumentRoot    /var/www/example2.dev/html
-        ErrorLog        /var/www/example2.dev/error.log
-        CustomLog       /var/www/example2.dev/requests.log  combined
 </VirtualHost>" >> /etc/httpd/sites-available/example2.dev.conf'
 sudo ln -s /etc/httpd/sites-available/example2.dev.conf /etc/httpd/sites-enabled/example2.dev.conf 
 echo "--> .. Done!"
