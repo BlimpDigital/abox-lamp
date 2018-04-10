@@ -33,7 +33,7 @@ echo " "
 echo "Setting up Apache..."
 sudo cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf.bak 
 sudo sed -i 's_/var/www/html_/var/www/_' /etc/httpd/conf/httpd.conf
-sudo sed -i 's_#ServerName www.example.com:80_ServerName www.abox.dev:80_' /etc/httpd/conf/httpd.conf
+sudo sed -i 's_#ServerName www.example.com:80_ServerName www.abox.local:80_' /etc/httpd/conf/httpd.conf
 sudo sed -i 's_User apache_User vagrant_' /etc/httpd/conf/httpd.conf
 sudo sed -i 's_Group apache_Group vagrant_' /etc/httpd/conf/httpd.conf
 sudo sh -c 'echo "IncludeOptional sites-enabled/*.conf" >> /etc/httpd/conf/httpd.conf'
@@ -45,46 +45,46 @@ sudo sed -i 's_ScriptAlias /cgi-bin/_#ScriptAlias /cgi-bin/_' /etc/httpd/conf/ht
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/httpd/conf/httpd.conf
 sudo sed -i "s/EnableSendfile on/EnableSendfile Off/g" /etc/httpd/conf/httpd.conf
 
-echo "--> Configuring aBox.dev Virtualhost"
-sudo mkdir /var/www/abox.dev
-sudo mkdir /var/www/abox.dev/html
-sudo touch /var/www/abox.dev/html/index.html
-sudo sh -c 'echo "This is abox.dev" >> /var/www/abox.dev/html/index.html'
-sudo touch /etc/httpd/sites-available/abox.dev.conf
+echo "--> Configuring aBox.local Virtualhost"
+sudo mkdir /var/www/abox.local
+sudo mkdir /var/www/abox.local/html
+sudo touch /var/www/abox.local/html/index.html
+sudo sh -c 'echo "This is abox.local" >> /var/www/abox.local/html/index.html'
+sudo touch /etc/httpd/sites-available/abox.local.conf
 sudo sh -c 'echo "<VirtualHost *:80>
-        ServerName      www.abox.dev
-        ServerAlias     abox.dev
-        DocumentRoot    /var/www/abox.dev/html
-</VirtualHost>" >> /etc/httpd/sites-available/abox.dev.conf'
-sudo ln -s /etc/httpd/sites-available/abox.dev.conf /etc/httpd/sites-enabled/abox.dev.conf 
+        ServerName      www.abox.local
+        ServerAlias     abox.local
+        DocumentRoot    /var/www/abox.local/html
+</VirtualHost>" >> /etc/httpd/sites-available/abox.local.conf'
+sudo ln -s /etc/httpd/sites-available/abox.local.conf /etc/httpd/sites-enabled/abox.local.conf 
 echo ".. Done!"
 
-echo "--> Configuring example1.dev Virtualhost"
-sudo mkdir /var/www/example1.dev
-sudo mkdir /var/www/example1.dev/html
-sudo touch /var/www/example1.dev/html/index.html
-sudo sh -c 'echo "This is example1.dev" >> /var/www/example1.dev/html/index.html'
-sudo touch /etc/httpd/sites-available/example1.dev.conf
+echo "--> Configuring example1.local Virtualhost"
+sudo mkdir /var/www/example1.local
+sudo mkdir /var/www/example1.local/html
+sudo touch /var/www/example1.local/html/index.html
+sudo sh -c 'echo "This is example1.local" >> /var/www/example1.local/html/index.html'
+sudo touch /etc/httpd/sites-available/example1.local.conf
 sudo sh -c 'echo "<VirtualHost *:80>
-        ServerName      www.example1.dev
-        ServerAlias     example1.dev
-        DocumentRoot    /var/www/example1.dev/html
-</VirtualHost>" >> /etc/httpd/sites-available/example1.dev.conf'
-sudo ln -s /etc/httpd/sites-available/example1.dev.conf /etc/httpd/sites-enabled/example1.dev.conf 
+        ServerName      www.example1.local
+        ServerAlias     example1.local
+        DocumentRoot    /var/www/example1.local/html
+</VirtualHost>" >> /etc/httpd/sites-available/example1.local.conf'
+sudo ln -s /etc/httpd/sites-available/example1.local.conf /etc/httpd/sites-enabled/example1.local.conf 
 echo "--> .. Done!"
 
-echo "--> Configuring example2.dev Virtualhost"
-sudo mkdir /var/www/example2.dev
-sudo mkdir /var/www/example2.dev/html
-sudo touch /var/www/example2.dev/html/index.html
-sudo sh -c 'echo "This is example2.dev" >> /var/www/example2.dev/html/index.html'
-sudo touch /etc/httpd/sites-available/example2.dev.conf
+echo "--> Configuring example2.local Virtualhost"
+sudo mkdir /var/www/example2.local
+sudo mkdir /var/www/example2.local/html
+sudo touch /var/www/example2.local/html/index.html
+sudo sh -c 'echo "This is example2.local" >> /var/www/example2.local/html/index.html'
+sudo touch /etc/httpd/sites-available/example2.local.conf
 sudo sh -c 'echo "<VirtualHost *:80>
-        ServerName      www.example2.dev
-        ServerAlias     example2.dev
-        DocumentRoot    /var/www/example2.dev/html
-</VirtualHost>" >> /etc/httpd/sites-available/example2.dev.conf'
-sudo ln -s /etc/httpd/sites-available/example2.dev.conf /etc/httpd/sites-enabled/example2.dev.conf 
+        ServerName      www.example2.local
+        ServerAlias     example2.local
+        DocumentRoot    /var/www/example2.local/html
+</VirtualHost>" >> /etc/httpd/sites-available/example2.local.conf'
+sudo ln -s /etc/httpd/sites-available/example2.local.conf /etc/httpd/sites-enabled/example2.local.conf 
 echo "--> .. Done!"
 
 sudo systemctl enable httpd.service > /dev/null 2>&1
