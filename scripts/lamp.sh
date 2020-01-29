@@ -90,6 +90,17 @@ echo "--> .. Done!"
 sudo systemctl enable httpd.service > /dev/null 2>&1
 sudo systemctl restart httpd.service > /dev/null 2>&1
 
+echo "Setting up PHP-FPM..."
+sudo cp /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.bak 
+sudo sed -i 's_user = apache_user = vagrant_' /etc/php-fpm.d/www.conf
+sudo sed -i 's_group = apache_group = vagrant_' /etc/php-fpm.d/www.conf
+sudo sed -i 's_;listen.owner = owner_listen.owner = vagrant' /etc/php-fpm.d/www.conf
+sudo sed -i 's_;listen.group = owner_listen.group = vagrant' /etc/php-fpm.d/www.conf
+sudo sed -i 's_;listen.mode = 0660_listen.mode = 0660_' /etc/php-fpm.d/www.conf
+sudo sed -i 's_listen.acl_users = apache,nginx_;listen.acl_users = apache,nginx_' /etc/php-fpm.d/www.conf
+
+sudo chown -R vagrant.vagrant /var/lib/php > /dev/null 2>&1
+
 sudo systemctl enable php-fpm > /dev/null 2>&1
 sudo systemctl restart php-fpm > /dev/null 2>&1
 echo "...Done!"
