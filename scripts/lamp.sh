@@ -1,32 +1,32 @@
 #!/bin/bash
 echo "Updating System..."
-sudo yum update -y > /dev/null 2>&1
+sudo dnf update -y > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
 
 echo "Installing Apache...(httpd httpd-tools)"
-sudo yum install -y httpd httpd-tools > /dev/null 2>&1
+sudo dnf install -y httpd httpd-tools > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
 echo "Installing PHP...(php php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm)" 
-sudo yum install -y php php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm > /dev/null 2>&1
+sudo dnf install -y php php-fpm php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm php-json > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
 echo "Installing GIT...(git)" 
-sudo yum install -y git > /dev/null 2>&1
+sudo dnf install -y git > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
 echo "Installing Expect...(expect)" 
-sudo yum install -y expect > /dev/null 2>&1
+sudo dnf install -y expect > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
 echo "Installing MariaDB...(mariadb-server mariadb)"
-sudo yum install -y mariadb-server mariadb > /dev/null 2>&1
+sudo dnf install -y mariadb-server mariadb > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
@@ -89,6 +89,9 @@ echo "--> .. Done!"
 
 sudo systemctl enable httpd.service > /dev/null 2>&1
 sudo systemctl restart httpd.service > /dev/null 2>&1
+
+sudo systemctl enable php-fpm > /dev/null 2>&1
+sudo systemctl restart php-fpm > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
