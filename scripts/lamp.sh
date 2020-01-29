@@ -11,7 +11,7 @@ echo "...Done!"
 echo " "
 
 echo "Installing PHP...(php php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm)" 
-sudo dnf install -y php php-fpm php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm php-json > /dev/null 2>&1
+sudo dnf install -y php php-fpm php-bcmath php-cli php-mbstring php-mysqlnd php-soap php-xml php-xmlrpc php-json > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
