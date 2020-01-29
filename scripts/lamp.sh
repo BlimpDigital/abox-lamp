@@ -10,7 +10,7 @@ sudo dnf install -y httpd httpd-tools > /dev/null 2>&1
 echo "...Done!"
 echo " "
 
-echo "Installing PHP...(php php-bcmath php-cli php-mbstring php-mysql php-soap php-xml php-xmlrpm)" 
+echo "Installing PHP...(php php-fpm php-bcmath php-cli php-mbstring php-mysqlnd php-soap php-xml php-xmlrpc php-json)" 
 sudo dnf install -y php php-fpm php-bcmath php-cli php-mbstring php-mysqlnd php-soap php-xml php-xmlrpc php-json > /dev/null 2>&1
 echo "...Done!"
 echo " "
