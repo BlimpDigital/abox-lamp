@@ -96,7 +96,7 @@ sudo sed -i 's_user = apache_user = vagrant_' /etc/php-fpm.d/www.conf
 sudo sed -i 's_group = apache_group = vagrant_' /etc/php-fpm.d/www.conf
 sudo sed -i 's/;listen.owner = nobody/listen.owner = vagrant/g' /etc/php-fpm.d/www.conf
 sudo sed -i 's/;listen.group = nobody/listen.group = vagrant/g' /etc/php-fpm.d/www.conf
-sudo sed -i 's_;listen.mode = 0660_listen.mode = 0660_' /etc/php-fpm.d/www.conf
+sudo sed -i 's/;listen.mode = 0660/listen.mode = 0660/g' /etc/php-fpm.d/www.conf
 sudo sed -i 's/listen.acl_users = apache,nginx/;listen.acl_users = apache,nginx/g' /etc/php-fpm.d/www.conf
 sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/httpd/conf/httpd.conf
 
