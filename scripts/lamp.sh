@@ -102,6 +102,8 @@ sudo sed -i "s/AllowOverride None/AllowOverride All/g" /etc/httpd/conf/httpd.con
 
 sudo systemctl enable php-fpm > /dev/null 2>&1
 sudo systemctl restart php-fpm > /dev/null 2>&1
+
+sudo chown -R vagrant.vagrant /var/lib/php
 echo "...Done!"
 echo " "
 
